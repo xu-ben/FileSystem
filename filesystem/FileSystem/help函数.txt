@@ -1,0 +1,344 @@
+bool Help(string args)
+{
+	int cmdnum = 11, index = 0;
+	string cmdnames[]={"cd", "color", "cp", "help", "mk", "mkdir", "move", "rename", "rm", "rmdir", "type"};
+
+	for(index = 0; index < cmdnum; index++)
+	{
+		if(args.compare(cmdnames[index]) == 0)
+		{ 
+			break;
+		}
+	}
+
+/*	switch(index)
+	{
+		case 0:    //cd
+			cout<<"显示当前目录的名称或将其更改。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想改变当前目录属性时",  " ［用　　法］    格式：CD[盘符：][路径名]<子目录名>", "使用说明：", "（1）“盘符”：指定要建立子目录的磁盘驱动器字母，若省略，则为当前驱动器;", "（2）“路径名”：要建立的子目录的上级目录名，若缺省则建在当前目录下。", " cd...返回上二级目录 ", "代表当前目录 ", "代表父目录", " cd ..\\..返回到上级目录的父目录(祖目录)", " cd A:\\ 将A盘的当前目录改为根目录","cd A:\\xx 将A盘的当前目录改为子目录xx下","cd ..\\98 先返回父目录,再进入父目录下的98子目录","cd ..返回到父目录","cd\\98 进入根目录下的98子目录","［例　　子］    C:\\>MD FOX （在当前驱动器C盘下创建子目录FOX）", "C:\\>MD FOX\\USER （在FOX 子目录下再创建USER子目录）"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 1:    //color
+			cout<<"改变当前字体和背景颜色。">>endl;
+			cout<<endl;
+			break;
+		case 2:     //cp
+			cout<<"将至少一个文件复制到另一个位置。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想将文件复制到其他位置时","［用　　法］    格式：COPY [源盘][路径]<源文件名> [目标盘][路径][目标文件名]", " COPY [/V] [/N] [/Y | /-Y] [/Z] [/A | /B ] source [/A | /B] ", "[+ source [/A | /B] [+ ...]] [destination [/A | /B]] ", "source 指定要复制的文件。 ",  "/A 表示一个 ASCII 文本文件。",  "/B 表示一个二进位文件。",  "destination 为新文件指定目录和/或文件名称。",   "/V 验证新文件写得正确。",   "/N 当复制一份带有非 8dot3 名称的文件，  如果可能的话，使用短文件名。",  "/Y 取消提示以确认您希望改写  一份现存目录文件。",   "/-Y 引起提示确认您想改写一份  现存目标文件。 ", "/Z 用可重新启动模式复制已联网的文件。 ", "[例　　子］    copy  c:\hello.exe d:\hello.exe    从c复制到d"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 3:      //help
+			cout<<"提供ms-dos命令的帮助信息。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想得到关于程序DOS命令的帮助时","［用　　法］	   HELP [command]",  " command - 显示该命令的帮助信息。", "［例　　子］    help dir"};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 4:     //mk
+			cout<<"创建一个文件。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想创建新的文件时", "［用　　法］    格式：MK[盘符：][路径名]<文件名>"," 使用说明：","（1）“盘符”：指定要建立文件的磁盘驱动器字母，若省略，则为当前驱动器；","（2）“路径名”：要建立的文件的上级目录名，若缺省则建在当前目录下。","［例　　子］    C:\>MK FOX （在当前驱动器C盘下创建子目录FOX）"," C:\>MK FOX\A.txt （在FOX 子目录下再创建A文件）"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 5:    //mkdir
+			cout<<"创建一个目录。"<<endl;		
+			const string cmdhelp[]={"［适用场合］    想创建新的目录时", "［用　　法］    格式：MKDIR[盘符：][路径名]<子目录名>"," 使用说明：","（1）“盘符”：指定要建立子目录的磁盘驱动器字母，若省略，则为当前驱动器；","（2）“路径名”：要建立的子目录的上级目录名，若缺省则建在当前目录下。","［例　　子］    C:\>MD FOX （在当前驱动器C盘下创建子目录FOX）"" C:\>MD FOX\USER （在FOX 子目录下再创建USER子目录）"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 6:  //move
+			cout<<"将一个或多个文件从一个目录移动到另一个目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想要移动文件的位置时","［用　　法］    要移动至少一个文件:","MOVE [/Y | /-Y] [drive:][path]filename1[,...] destination", "要重命名一个目录:","MOVE [/Y | /-Y] [drive:][path]dirname1 dirname2[drive:][path]filename1 指定您想移动的文件位置和名称。","[drive:][path]dirname1  指定要重命名的目录。","dirname2                指定目录的新名称。"," /Y                      取消确认改写一个现有目标文件的提示。","/-Y                     对确认改写一个现有目标文件发出提示","［例　　子］    move e:\f f:\f "};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 7:    //rename
+			cout<<"修改文件名。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想要改变文件名称时", "［用　　法］    格式：rename [盘符:][路径]<旧文件名> <新文件名>","使用说明：","（1）新文件名前不可以加上盘符和路径，因为该命令只能对同一盘上的文件更换文件名；","（2）允许使用通配符更改一组文件名或扩展名。", "［例　　子］   rename a.txt b.txt    把文件a.txt改名为b.txt。"};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 8:    //rm
+			cout<<"删除文件。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想删除不需要的文件时","［用　　法］    格式：RM[盘符：][路径名][文件名]"," 使用说明：","（1） 指定一个或数个文件或目录列表。通配符可被用来删除多个文件。"," 如果指定了一个目录，目录中的所有文件都会被删除。",  "［例　　子］    删除C盘FOX目录下的A 文件： C:\>RM C:\FOX\A.txt "};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 9:    //rmdir
+			cout<<"删除目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想要删除不要的目录时",  "［用　　法］    格式：RMDIR [/S] [/Q] [drive:]path",    "/S      除目录本身外，还将删除指定目录下的所有子目录和文件。用于删除目录树。",    "/Q      安静模式，带 /S 删除目录树时不要求确认",				        "［例　　子］    在A盘根目录下有TEXT子目录，在TEXT子目录中有FILE1.TXT和FILE2.TXT两个文件，", " 删除TEXT目录的方法是："," c:\>DEL TEXT\*.*"," c:\>RD TEXT "};",
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+	}
+/*	int sngcmdnum = 5;
+	int index;
+	string sngcmds[]={"cd..","cls","dir","exit","help"};
+
+	for(index = 0; index < sngcmdnum; index++)
+	{
+		if(args.compare(sngcmds[index]) == 0)
+		{ 
+			break;
+		}
+	}
+	switch(index)
+	{
+		case 0:   //cd..
+			cout<<"返回上一级目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想返回上一级目录时",  " ［用　　法］    格式：CD.."," cd A:\ 将A盘的当前目录改为根目录","cd A:\xx 将A盘的当前目录改为子目录xx下","cd ..\98 先返回父目录,再进入父目录下的98子目录","cd ..返回到父目录","cd\98 进入根目录下的98子目录","［例　　子］    C:\>MD.."};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 1:    //cls
+			cout<<"清除屏幕。"<<endl;
+			break;
+		case 2:    //cls
+			cout<<"显示一个目录中的文件和子目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想查看目录中的内容时","［用　　法］    格式:DIR [盘符:][路径][文件名] [/A[[:]属性]] [/C] [/D] [/L] [/N] [/O[[:]分类属性]] [/P] [/Q] [/S] [/T[[:]时间]] [/W] [/X] [/4]"," /A 显示具有指定属性的文件。","属性 D 目录 R 只读文件"," H 隐藏文件 A 准备存档的文件"," S 系统文件 - 表示“否”的前缀"," /L 用小写。","/N 新的长列表格式，其中文件名在最右边。","/O 用分类顺序列出文件。"," 分类排序 N 按名称(字母顺序) S 按大小(从小到大)"," E 按扩展名(字母顺序) D 按日期/时间(从先到后)", " G 组目录优先 - 颠倒顺序的前缀"," /Q 显示文件所有者。", "/S 显示指定目录和所有子目录中的文件。", "［例　　子］    dir /a:attrib 缺省包含所有文件(系统文件.隐含文件)"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+		case 3:    //exit
+			cout<<"退出Shell程序。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想退出程序时", "［用　　法］    EXIT [/B] [exitCode]",   "/B 指定退出当前批脚本而不是 CMD.EXE。"," 如果从一个批脚本  批脚本外执行，则会退出 CMD.EXE",  " exitCode 指定一个数字号码。如果指定了/B，", " 将 ERRORLEVEL  设成那个数字。"," 如果退出 CMD.EXE，用那个数字设置过程退出代码。",   "［例　　子］    exit"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<end;
+			break;
+		case 4:    //help
+			cout<<"提供ms-dos命令的帮助信息。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想得到关于程序DOS命令的帮助时","［用　　法］	   HELP [command]",  " command - 显示该命令的帮助信息。", "［例　　子］    help dir"};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+			break;
+	}
+	return true;
+}
+
+/*	int cmdhelplength;//=?
+		else if(args.compare("cd")==0)
+		{
+			cout<<"显示当前目录的名称或将其更改。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想改变当前目录属性时",  " ［用　　法］    格式：CD[盘符：][路径名]<子目录名>","使用说明：","（1）“盘符”：指定要建立子目录的磁盘驱动器字母，若省略，则为当前驱动器;","（2）“路径名”：要建立的子目录的上级目录名，若缺省则建在当前目录下。"," cd...返回上二级目录 "."代表当前目录 "."代表父目录"," cd ..\..返回到上级目录的父目录(祖目录)"," cd A:\ 将A盘的当前目录改为根目录","cd A:\xx 将A盘的当前目录改为子目录xx下","cd ..\98 先返回父目录,再进入父目录下的98子目录","cd ..返回到父目录","cd\98 进入根目录下的98子目录","［例　　子］    C:\>MD FOX （在当前驱动器C盘下创建子目录FOX）","C:\>MD FOX\USER （在FOX 子目录下再创建USER子目录）"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("")==0)
+		{
+			cout<<"显示当前目录的名称或将其更改。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想显示当前目录的名称，或更改当前的文件夹时","［用　　法］    格式 CHDIR[盘符][路径] 或 CD[盘符][路径]","CHDIR [/D] [drive:][path]","CHDIR [..]","CD [/D] [drive:][path]","CD [..]","参数:","/d  	更改当前驱动器或驱动器的当前目录。","[drive:][Path]  指定要改为的驱动器（如果不是当前驱动器）和目录。","[..]     指明要改到父文件夹。","[例　　子］	   C:\>CD<Enter>  (显示当前目录)","C：\     (列出当前目录为根目录)","C:\>CD  USER1\USER_1.DIR<Enter>   (相对路径)","C:\>CD<Enter>  (列当前目录)"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("copy")==0)
+		{
+			cout<<"将至少一个文件复制到另一个位置。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想将文件复制到其他位置时","［用　　法］    格式：COPY [源盘][路径]<源文件名> [目标盘][路径][目标文件名]", " COPY [/V] [/N] [/Y | /-Y] [/Z] [/A | /B ] source [/A | /B] ", "[+ source [/A | /B] [+ ...]] [destination [/A | /B]] ", "source 指定要复制的文件。 ",  "/A 表示一个 ASCII 文本文件。",  "/B 表示一个二进位文件。",  "destination 为新文件指定目录和/或文件名称。",   "/V 验证新文件写得正确。",   "/N 当复制一份带有非 8dot3 名称的文件，  如果可能的话，使用短文件名。",  "/Y 取消提示以确认您希望改写  一份现存目录文件。",   "/-Y 引起提示确认您想改写一份  现存目标文件。 ", "/Z 用可重新启动模式复制已联网的文件。 ", "[例　　子］    copy  c:\hello.exe d:\hello.exe    从c复制到d"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		
+		else if(args.compare("del")==0)
+		{
+			cout<<"删除至少一个文件。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想要删除某个文件时","［用　　法］    格式：DEL [盘符:][路径]<文件名>[/P]" ,"DEL [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names",  "names 指定一个或数个文件或目录列表。通配符可被用来 ", "删除多个文件。如果指定了一个目录，目录中的所有","文件都会被删除。",  "/P 删除每一个文件之前提示确认信息。",  "/F 强制删除只读文件。",  "/S 从所有子目录删除指定文件。", "/Q 安静模式。删除全域通配字符时，不要求确认。  ","/A 根据属性选择要删除的文件。",  "attributes R 只读文件 S 系统文件",  "H 隐藏文件 A 存档文件",  "- 表示“否”的前缀", " ［例　　子］    del c:\windows\winver.exe"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("dir")==0)
+		{
+			cout<<"显示一个目录中的文件和子目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想查看目录中的内容时","［用　　法］    格式:DIR [盘符:][路径][文件名] [/A[[:]属性]] [/C] [/D] [/L] [/N] [/O[[:]分类属性]] [/P] [/Q] [/S] [/T[[:]时间]] [/W] [/X] [/4]"," /A 显示具有指定属性的文件。","属性 D 目录 R 只读文件"," H 隐藏文件 A 准备存档的文件"," S 系统文件 - 表示“否”的前缀"," /L 用小写。","/N 新的长列表格式，其中文件名在最右边。","/O 用分类顺序列出文件。"," 分类排序 N 按名称(字母顺序) S 按大小(从小到大)"," E 按扩展名(字母顺序) D 按日期/时间(从先到后)", " G 组目录优先 - 颠倒顺序的前缀"," /Q 显示文件所有者。", "/S 显示指定目录和所有子目录中的文件。", "［例　　子］    dir /a:attrib 缺省包含所有文件(系统文件.隐含文件)"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+
+		else if(args.compare("exit")==0)
+		{
+			cout<<"退出Shell程序。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想退出程序时", "［用　　法］    EXIT [/B] [exitCode]",   "/B 指定退出当前批脚本而不是 CMD.EXE。"," 如果从一个批脚本  批脚本外执行，则会退出 CMD.EXE",  " exitCode 指定一个数字号码。如果指定了/B，", " 将 ERRORLEVEL  设成那个数字。"," 如果退出 CMD.EXE，用那个数字设置过程退出代码。",   "［例　　子］    exit"};
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<end;
+		}
+		else if(args.compare("find")==0)
+		{
+			cout<<"在一个或多个文件中搜索一个文字字符串。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想搜索文件内容时","［用　　法］    FIND [/V] [/C] [/N] [/I] "string" [[drive:][path]filename[ ...]] ", " /V 显示所有未包含指定字符串的行。",  " /C 仅显示包含字符串的行数。",  " /N 显示行号。 ", " /I 搜索字符串时忽略大小写。", " "string" 指定要搜索的文字串，",  " [drive:][path]filename  指定要搜索的文件。", " 如果没有指定路径，FIND 将搜索键入的或者由另一命令产生的文字。","［例　　子］    find / -ctime -1 #    查找在系统中最后24小时里被改变状态的文件","find / -size +5k #    查找系统中大于5k字节的文件"};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("help")==0)
+		{
+			cout<<"提供ms-dos命令的帮助信息。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想得到关于程序DOS命令的帮助时","［用　　法］	   HELP [command]",  " command - 显示该命令的帮助信息。", "［例　　子］    help dir"};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("md")==0)
+		{
+			cout<<"创建一个目录。"<<endl;
+		
+			const string cmdhelp[]={"［适用场合］    想创建新的目录、文件时", "［用　　法］    格式：MD[盘符：][路径名]<子目录名>"," 使用说明：","（1）“盘符”：指定要建立子目录的磁盘驱动器字母，若省略，则为当前驱动器；","（2）“路径名”：要建立的子目录的上级目录名，若缺省则建在当前目录下。","［例　　子］    C:\>MD FOX （在当前驱动器C盘下创建子目录FOX）"" C:\>MD FOX\USER （在FOX 子目录下再创建USER子目录）"};
+
+
+			for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		
+		else if(args.compare("more")==0)
+		{
+			cout<<"逐屏显示输出。"<<endl;
+			const string cmdhelp[]={"［适用场合］    当输出很多一屏显示不下时采用，几乎适合所有命令，","尤其是type等命令时很有用。 使用more时磁盘不能有写保护，也不适合光驱。",  "［用　　法］	   type [文件名] | more 分屏显示文件内容", "more < [文件名] 分屏显示文件内容 ","［例　　子］    C:\>type msdos.w40 | more "};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("move")==0)
+		{
+			cout<<"将一个或多个文件从一个目录移动到另一个目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想要移动文件的位置时","［用　　法］    要移动至少一个文件:","MOVE [/Y | /-Y] [drive:][path]filename1[,...] destination", "要重命名一个目录:","MOVE [/Y | /-Y] [drive:][path]dirname1 dirname2[drive:][path]filename1 指定您想移动的文件位置和名称。","[drive:][path]dirname1  指定要重命名的目录。","dirname2                指定目录的新名称。"," /Y                      取消确认改写一个现有目标文件的提示。","/-Y                     对确认改写一个现有目标文件发出提示","［例　　子］    move e:\f f:\f "};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("rd")==0)
+		{
+			cout<<"删除目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想删除不需要的目录、文件时","［用　　法］    格式：RD[盘符：][路径名][子目录名]"," 使用说明：","（1）子目录在删除前必须是空的，也就是说需要先进入该子目录，"," 使用DEL（删除文件的命令）将其子目录下的文件删空，然后再退回到上一级目录，用RD命令删除该了目录本身；", "（2）不能删除根目录和当前目录。", "［例　　子］    要求把C盘FOX子目录下的USER子目录删除，操作如下：","第一步：先将USER子目录下的文件删空；","C:\>DEL C:\FOX\USER\*.*","第二步，删除USER子目录。","C:\>RD C:\FOX\USER "};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("ren")==0)
+		{
+			cout<<"修改文件名。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想要改变文件名称时", "［用　　法］    格式：REN [盘符:][路径]<旧文件名> <新文件名>","使用说明：","（1）新文件名前不可以加上盘符和路径，因为该命令只能对同一盘上的文件更换文件名；","（2）允许使用通配符更改一组文件名或扩展名。", "［例　　子］    ren a.txt b.txt    把文件a.txt改名为b.txt。"};
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("rmdir")==0)
+		{
+			cout<<"删除目录。"<<endl;
+			const string cmdhelp[]={"［适用场合］    想要删除不要的目录时",  "［用　　法］    格式：RMDIR [/S] [/Q] [drive:]path",    "/S      除目录本身外，还将删除指定目录下的所有子目录和文件。用于删除目录树。",    "/Q      安静模式，带 /S 删除目录树时不要求确认",				        "［例　　子］    在A盘根目录下有TEXT子目录，在TEXT子目录中有FILE1.TXT和FILE2.TXT两个文件，", " 删除TEXT目录的方法是："," c:\>DEL TEXT\*.*"," c:\>RD TEXT "};",
+		    for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+		}
+		else if(args.compare("xcopy")==0)
+		{
+			cout<<"复制文件和目录树。"<<endl;
+			const string cmdhelp[]={"［适用场合］   当在进行连同子目录一起拷贝时很有用，在拷贝大量文件时比COPY命令要快得多", "［用　　法］   xcopy [文件名] [目录] 将指定文件拷贝到指定目录", "xcopy [源目录] [目的目录] 将源目录连子目录考到目的目录下 "," xcopy *.* [目录] /s 将文件与非空子目录拷贝到指定目录", "其它常用参数还有: v 拷贝后校验，会影响速度 ", " e 与s 相似，但即使子目录是空的也会拷贝。","［例　　子］   将A盘上的所有文件和子目录拷贝到B盘(包括所有的空子目录)：","xcopy a: b: /s /e  "};
+		     for(int i=0;i<cmdhelplength;i++)
+			{
+				cout<<cmdhelp[i];
+				cout<<endl;
+			}
+			cout<<endl;
+*/
+	return true;
+}
